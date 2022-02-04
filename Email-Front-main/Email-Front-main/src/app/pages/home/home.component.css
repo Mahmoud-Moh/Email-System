@@ -1,0 +1,493 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  width: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+html{
+  height: 100%;
+}
+a{
+  text-decoration: none;
+}
+a:visited{
+  text-decoration: none;
+}
+header.global-nav{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 105px;
+  padding: 2px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.global-nav-left-part{
+  flex-flow: row nowrap;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 0.6rem 10rem 0.6rem 1rem;
+}
+
+.global-nav-left-part p{
+  margin-right: 0;
+  margin-left: 20px;
+}
+.signOut {
+  width: 150px;
+  height: 50px;
+  color: #3c4043;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.selectSort {
+  width: 140px;
+  height: 30px;
+  color: #5f6368;
+  font-size: 20px;
+  border: #5f6368;
+  border-radius: 20px;
+}
+
+.selectSearch {
+  width: 140px;
+  height: 30px;
+  color: #5f6368;
+  font-size: 15px;
+  border: #5f6368;
+  border-radius: 20px;
+}
+
+.hideFilter {
+  display: none;
+}
+
+.global-nav-left-part #menu:hover{
+  /*background-color: #ebecec;*/
+  cursor: pointer;
+}
+
+.global-nav-left-part #logo:hover{
+  /*background-color: #ebecec;*/
+  cursor: pointer;
+}
+
+.global-nav-left-part p img{
+  margin: auto;
+  position: relative;
+}
+
+textarea {
+  resize: none;
+}
+.img{
+  height: 80px;
+  width: 100px;
+}
+
+
+.search-global{
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 47px;
+  font-size: 15px;
+  color: #5f6368;
+  background-color: #f1f3f4;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+
+.search-global svg{
+  fill: #5f6368;
+}
+
+.search-global input{
+  width: 90%;
+  padding: 0.6rem 0.3rem;
+  border: none;
+  outline: none;
+  background-color: #f1f3f4;
+}
+
+.search-global svg:nth-child(3){
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+
+.search-global svg:nth-child(3):hover{
+  background-color: rgba(60,64,67,0.08);
+  cursor: pointer;
+}
+
+.search-global svg:nth-child(1){
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+
+.search-global svg:nth-child(1):hover{
+  background-color: rgba(60,64,67,0.08);
+  cursor: pointer;
+}
+
+.global-nav-left-part p img:hover{
+  padding-bottom: 8px;
+}
+
+.flex-contaier{
+  display: flex;
+  width-flow: row nowrap;
+  width: 100%;
+}
+
+.left-nav{
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 0 0 19%;
+  height: 100%;
+  position: sticky;
+  top: 60px;
+  font-family: "Roboto", serif;
+  font-size: 0.889rem;
+  letter-spacing: 0.2px;
+  background-color: #fff;
+}
+
+.left-nav .compose{
+  margin: 1rem 0.5rem 0 0;
+  padding-left: 0.5rem;
+  height: 12%;
+}
+
+.btn a{
+  display: flex;
+  width: 75%;
+  flex-flow: row nowrap;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 0.3rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),0 1px 3px 1px rgba(60, 64, 67, 0.3);
+  font-size: 0.875rem;
+  background-color: #fff;
+  border-radius: 24px;
+  color: #3c4043;
+  font-weight: 500;
+  height: 48px;
+  min-width: 56px;
+  align-items: center;
+}
+
+.compose img{
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  margin-left: -13px;
+}
+
+.btn p{
+  margin-top: 4px;
+}
+
+.left-nav .btn a:hover{
+  background-color: #fafafb;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 04px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+.left-nav .nav-list{
+  height: 150px;
+  overflow: hidden;
+  line-height: 1.6rem;
+}
+
+.nav-list a{
+  display: flex;
+  padding: 3px;
+  padding-left: 1.6rem;
+  width: 100%;
+  color: #555;
+}
+
+.nav-list a:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0 25px 25px 0;
+}
+
+.main-container{
+  height: 100%;
+}
+
+.left-nav .nav-list a:first-child{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color:rgba(3, 129, 102, 0.9);
+}
+
+.left-nav .nav-list a:first-child:hover{
+  background-color: rgba(3, 129, 113, 0.2);
+}
+
+.nav-list .count{
+  font-size: 0.8rem;
+  padding-left: 50px;
+}
+.main-content{
+  width: 100%;
+}
+
+.main-content .content-nav{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 220%;
+  height: 50px;
+  position: sticky;
+  top: 10vh;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:inset 0 -1px 0 0 rgba(100, 121, 143, 0.122);
+}
+
+.main-content .content-nav .left-icons{
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 14%;
+  font-size: 13px;
+  color: #7c7c7c;
+  border-radius: 10px;
+}
+
+.mail-box{
+  width: 100%;
+}
+.mail-list{
+  color: #202124;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow:inset 0 -1px 0 0 rgba(100, 121, 143, 0.12);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mail-icons-left{
+  display: flex;
+  flex: 0 0 25%;
+  min-width: 25%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.mail-icons-left input{
+  margin-right: 1rem;
+  display: block;
+}
+
+.mail-list .mail-content{
+  display: flex;
+  flex-direction: column;
+  flex-flow: column;
+  flex-basis: 50%;
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.mail-list .mail-content{
+  letter-spacing: 0;
+}
+
+.mail-list:hover{
+  box-shadow:inset 0 -2px 0 0 rgba(150, 160, 143, 0.3);
+  cursor: pointer;
+}
+
+.left-icons :hover{
+  cursor: pointer;
+}
+
+mail-list .mail-content .subject{
+  text-align: center;
+}
+
+
+.mail-list .title{
+  font-size: 15px;
+  line-height: 0.2px;
+  font-weight: bold;
+}
+
+.mail-list .sub-text{
+  /*width: 100%;*/
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+  opacity: 50%;
+}
+
+.mail-content{
+  margin-left: -6rem;
+}
+
+/*******************************************************************************/
+
+
+/* CHATBOX
+=============== */
+.chatbox {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcfbfb;
+  width: 500px;
+  height: 400px;
+  z-index: 123456;
+  opacity: 1;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+
+/* BUTTON */
+.chatbox__button {
+  text-align: right;
+}
+
+/* HEADER */
+.chatbox__header {
+  top: 0;
+  border-radius: 5px;
+  background: #78abbb;
+  padding-left: 20px;
+}
+
+/* MESSAGES */
+.chatbox__messages {
+  margin-top: auto;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+}
+
+/* FOOTER */
+.chatbox__footer {
+  position: sticky;
+  bottom: 0;
+}
+
+
+#email-textarea{
+  margin-top: 20px;
+}
+
+#attach{
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+#sendEmail{
+  margin-left: 450px;
+  margin-top : -30px;
+  width: 60px;
+  height: 30px;
+}
+
+.example-full-width {
+  width: 90%;
+  color: #5f6368;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: 3px solid #5f6368 ;
+  height: 60px;
+  resize: none;
+}
+
+
+.filter-btn {
+  width: 60%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #034854FF;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#FILTERICON:hover{
+  cursor: pointer;
+}
+
+/* Pagination links */
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.text-right{
+  bottom: 0;
+  margin-left: 580px;
+  position: absolute;
+}
+
+
+
+
+
+
+

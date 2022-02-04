@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+  <link rel="shortcut icon" href="../material/new-message.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="global-nav">
+  <div class="global-nav-left-part">
+    <p id="menu"><img [src]="image1" alt="menu" width="35px"></p>
+    <a routerLink="/home/"><p id="logo"><img [src]="image2" alt="logo" width="70px"></p></a>
+  </div>
+  <div class="search-global">
+    <svg focusable="false" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M20.49,19l-5.73-5.73C15.53,12.2,16,10.91,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.41,0,2.7-0.47,3.77-1.24L19,20.49L20.49,19z M5,9.5C5,7.01,7.01,5,9.5,5S14,7.01,14,9.5S11.99,14,9.5,14S5,11.99,5,9.5z"></path>
+      <path d="M0,0h24v24H0V0z" fill="none"></path>
+    </svg>
+    <input type="text" placeholder="Search mail...">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path
+        d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path>
+    </svg>
+  </div>
+  <button mat-button routerLink="" class="signOut">Sign out</button>
+</header>
+<section class="main-container">
+  <div class="flex-contaier">
+    <aside class="left-nav">
+      <div class="compose">
+        <div class="btn">
+          <a href="#"><img src="assets/compose2.png" alt="">
+            <p>Compose</p>
+          </a>
+        </div>
+        <div class="nav-list">
+          <a routerLink="/home/inbox"><img src="/assets/inbox2.png" alt=""><span class="header">Inbox</span><span
+            class="count">{{currentMails.length}}</span></a>
+          <a routerLink="/home/sent">
+            <fa-icon [icon]="faPaperPlane"></fa-icon>
+            Sent</a>
+          <a  routerLink="/home/draft">
+            <fa-icon [icon]="faFile" ></fa-icon>
+            Draft</a>
+          <a routerLink="/home/trash">
+            <fa-icon [icon]="faTrash"></fa-icon>
+            Trash</a>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="content-nav">
+        <div class="left-icons">
+          <div class="select">
+            <input type="checkbox">
+            <fa-icon [icon]="faCaretDown"></fa-icon>
+          </div>
+          <fa-icon [icon]="faTrash"></fa-icon>
+          <fa-icon [icon]="faEllipsisV"></fa-icon>
+        </div>
+      </div>
+      <div class="content-divs"><label>From:</label>
+        <label class="margin-left-20"><a class="sender-email">{{currentMails[paramQuery_int].Sender}}</a></label>
+      </div>
+      <div class="content-divs"><label>Subject:</label>
+        <label class="margin-left-20">{{currentMails[paramQuery_int].Subject}}</label>
+      </div>
+      <div class="content-divs"><label>Priority:</label>
+        <label class="margin-left-20">{{currentMails[paramQuery_int].Priority}}</label>
+      </div>
+      <div class="message-area">
+        <div class="message-view-area"><span style="">{{currentMails[paramQuery_int].Body}}</span>
+          <div *ngFor="let item of currentMails[paramQuery_int].Attachment">
+            <a target="_blank" [href]="item">example</a>.
+          </div>
+        </div>
+
+      </div>
+      <div class="action-buttons">
+        <button class="button raise" style="margin-right:10px">reply</button>
+        <!--<button classF ="button raise"><a routerLink="/mail/{{paramQuery_int+1}}">Next</a></button>-->
+      </div>
+    </main>
+    <aside class="right-nav"></aside>
+  </div>
+
+</section>
+</body>
+</html>

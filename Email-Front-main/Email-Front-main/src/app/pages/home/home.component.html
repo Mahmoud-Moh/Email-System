@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DigiMail</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="global-nav">
+  <div class="global-nav-left-part">
+    <p id="menu"><img [src]="image1" alt="menu" width="35px"></p>
+    <a routerLink="/home/"><p id="logo"><img [src]="image2" alt="logo" width="70px"></p></a>
+  </div>
+  <div class="search-global">
+    <svg focusable="false" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"
+         (click)="search_handling()">
+      <path
+        d="M20.49,19l-5.73-5.73C15.53,12.2,16,10.91,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.41,0,2.7-0.47,3.77-1.24L19,20.49L20.49,19z M5,9.5C5,7.01,7.01,5,9.5,5S14,7.01,14,9.5S11.99,14,9.5,14S5,11.99,5,9.5z"></path>
+      <path d="M0,0h24v24H0V0z" fill="none"></path>
+    </svg>
+    <input type="text" placeholder="Search mail..." [(ngModel)]="search_input">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="hideFilter">
+      <path
+        d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path>
+    </svg>
+    <select class="selectSearch" [(ngModel)]="search_type">
+      <option value="sender">Sender</option>
+      <option value="receiver">Receiver</option>
+      <option value="subject">Subject</option>
+      <option value="body">Body</option>
+      <option value="priority">Importance</option>
+    </select>
+  </div>
+
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <textarea matInput placeholder="subject" [(ngModel)]="FilterSubject" style="resize: none"></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <textarea matInput placeholder="sender" [(ngModel)]="FilterSender" style="resize: none"></textarea>
+    </mat-form-field>
+  </div>
+  <div style="margin-bottom: 10px">
+    <fa-icon [icon]="faFilter" (click)="filter_handling()" id="FILTERICON"></fa-icon>
+  </div>
+  <button mat-button routerLink="" class="signOut">Sign out</button>
+  <div class="global-nav-right-part"></div>
+</header>
+<section class="main-container">
+  <div class="flex-contaier">
+    <aside class="left-nav">
+      <div class="compose">
+        <div class="btn">
+          <a (click)="toggle_compose()"><img src="../../../assets/compose2.png" alt="">
+            <p>Compose</p>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div (click)="inboxLoad()"><a><img src="/assets/inbox2.png" alt=""><span class="header">Inbox</span><span
+            class="count">{{count}}</span></a></div>
+          <div (click)="sentLoad()"><a>
+            <fa-icon [icon]="faPaperPlane"></fa-icon>
+            Sent</a></div>
+          <a (click)="draftLoad()">
+            <fa-icon [icon]="faFile"></fa-icon>
+            Draft</a>
+          <a (click)="trashLoad()">
+            <fa-icon [icon]="faTrash"></fa-icon>
+            Trash</a>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="content-nav">
+        <div class="left-icons">
+          <div class="select">
+            <input type="checkbox">
+            <fa-icon [icon]="faCaretDown"></fa-icon>
+          </div>
+          <fa-icon [icon]="faTrash" (click)="delete()"></fa-icon>
+          <fa-icon [icon]="faEllipsisV"></fa-icon>
+          <fa-icon (click)="Refresh()" [icon]="faArrowAltCircleUp"></fa-icon>
+          <select class="selectSort" [(ngModel)]="SortCriteria" (change)="sort_handling()">
+            <option value="date">Date</option>
+            <option value="sender">Sender</option>
+            <option value="priority">Priority</option>
+            <option value="subject">Subject</option>
+            <option value="body">Body</option>
+          </select>
+        </div>
+
+
+      </div>
+      <div class="mail-box">
+
+        <div *ngFor="let item of currentMails | paginate: { itemsPerPage: emailsPerpageCount, currentPage: p }" class="mail-list" >
+          <div class="mail-icons-left">
+            <input type="checkbox" name="mail" id="mailNo" (click)="markChecked(currentMails.indexOf(item))">
+            <h4 class="title"><a routerLink="/mail/{{currentMails.indexOf(item)}}">{{item.Sender}}</a></h4>
+          </div>
+          <div class="mail-content">
+            <p class="subject">{{item.Subject}}
+              <span class="sub-text">{{check(item.Body)}}</span>
+              <span class="sub-text" style="margin-left: 600px">{{check(item.StringDate)}}</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</section>
+<section class="compose-window">
+  <div *ngIf="compose_state" class="chatbox">
+    <div class="chatbox__header"> new Email
+    </div>
+    <label for="priority" style="font-size: smaller">priority:</label>
+
+    <select name="priority" id="priority" [(ngModel)]="selectedPriority" style="width:80px">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+
+    <div class="inputs-email-box">
+      <label for="to">To:</label>
+      <input type="text" id="to" name="fname" [(ngModel)]="To"><br>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="lname" [(ngModel)]="Title">
+    </div>
+    <div class="messages">
+      <div class="chatbox__footer">
+        <textarea rows="10" cols="50" id="email-textarea" placeholder="Write your message hear."
+                  [(ngModel)]="Content"></textarea>
+      </div>
+
+      <div *ngFor = "let item of url">
+        <a target="_blank" [href]="item">example</a>.
+      </div>
+    <div style="text-align:center">
+      <p id="attach">
+        <input type="file" (change)="selectFile($event)">
+      </p>
+    </div>
+      <div id="sendEmail">
+        <button type="submit" (click)="sendComposedEmail()">Send</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Including the pagination control.-->
+<div class="text-right">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</body>
+</html>

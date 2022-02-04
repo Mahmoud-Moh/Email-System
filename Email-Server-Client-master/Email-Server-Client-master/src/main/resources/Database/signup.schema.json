@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "EmailAddress": "Engineering@gmail.com",
+      "Pass": "21kwda",
+      "UserName": "mohamed12"
+    }
+  ],
+  "required": [
+    "EmailAddress",
+    "Pass",
+    "UserName"
+  ],
+  "properties": {
+    "EmailAddress": {
+      "$id": "#/properties/EmailAddress",
+      "type": "string",
+      "title": "The EmailAddress schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "pattern": "^\\S+@\\S+\\.\\S+$",
+      "format": "email",
+      "examples": [
+        "Engineering@gmail.com"
+      ]
+    },
+    "Pass": {
+      "$id": "#/properties/Pass",
+      "type": "string",
+      "title": "The Pass schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "21kwda"
+      ]
+    },
+    "UserName": {
+      "$id": "#/properties/UserName",
+      "type": "string",
+      "title": "The UserName schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "mohamed12"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
